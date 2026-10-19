@@ -1,0 +1,967 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Naveen Hospitals — Passion for Care · Guntur</title>
+<meta name="description" content="Naveen Hospitals, Guntur — a multispecialty hospital with a Centre for Neurosciences, comprehensive epilepsy care, general surgery and ophthalmology.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0a1230;
+  --navy:#0f1b4c;
+  --navy-2:#16246a;
+  --red:#e2302f;
+  --coral:#ff6a5b;
+  --cyan:#5fe0ff;
+  --teal:#0b7d7a;      /* calm accent on light backgrounds */
+  --teal-2:#5fe3d3;    /* calm accent on dark backgrounds */
+  --teal-deep:#085e5c;
+  --paper:#f6f4ef;
+  --paper-2:#ece8df;
+  --muted:#5d6480;
+  --line:rgba(15,27,76,.12);
+  --white:#fff;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:auto;overflow-x:clip}
+body{font-family:Manrope,system-ui,sans-serif;background:var(--paper);color:var(--ink);overflow-x:clip;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.serif{font-family:'Bricolage Grotesque',Manrope,sans-serif;font-weight:600;letter-spacing:-.04em}
+.wrap{width:min(1240px,100% - 48px);margin-inline:auto}
+@media (max-width:600px){.wrap{width:calc(100% - 32px)}}
+
+/* ---------- Preloader ---------- */
+.loader{position:fixed;inset:0;z-index:200;background:var(--ink);display:grid;place-items:center;transition:clip-path 1.1s var(--ease)}
+.loader.done{clip-path:inset(0 0 100% 0)}
+.loader svg{width:min(420px,80vw);height:90px}
+.loader path{fill:none;stroke:var(--teal-2);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:900;stroke-dashoffset:900;animation:ecg 1.6s var(--ease) forwards}
+.loader .lbl{position:absolute;bottom:14%;color:#fff;font-size:12px;letter-spacing:.4em;text-transform:uppercase;opacity:.6}
+.loader .pct{font-family:'Bricolage Grotesque',Manrope,sans-serif;color:#fff;font-size:15px;margin-top:18px;text-align:center;opacity:.8}
+@keyframes ecg{to{stroke-dashoffset:0}}
+
+/* ---------- Cursor ---------- */
+.cursor,.cursor-dot{position:fixed;top:0;left:0;pointer-events:none;z-index:150;border-radius:50%;mix-blend-mode:difference}
+.cursor{width:38px;height:38px;border:1.5px solid #fff;transform:translate(-50%,-50%);transition:width .35s var(--ease),height .35s var(--ease),background .35s}
+.cursor.hover{width:78px;height:78px;background:#fff}
+.cursor-dot{width:6px;height:6px;background:#fff;transform:translate(-50%,-50%)}
+@media (hover:none){.cursor,.cursor-dot{display:none}}
+
+/* ---------- Nav ---------- */
+.nav{position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:100;width:min(1240px,100% - 32px);display:flex;align-items:center;justify-content:space-between;padding:10px 12px 10px 22px;border-radius:999px;background:rgba(10,18,48,.35);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);border:1px solid rgba(255,255,255,.12);transition:background .4s,transform .5s var(--ease)}
+.nav.light{background:rgba(255,255,255,.75);border-color:var(--line)}
+.nav.light .brand,.nav.light .links a{color:var(--ink)}
+.nav.hide{transform:translate(-50%,-140%)}
+.brand{display:flex;align-items:center;gap:11px;color:#fff;transition:color .4s}
+.nav.light .brand{color:#21227e}
+.brand-mark{height:46px;width:auto;flex:none;filter:brightness(0) invert(1);transition:filter .4s}
+.nav.light .brand-mark{filter:none}
+.brand-text{display:flex;flex-direction:column;line-height:1}
+.brand-text b{font-family:'Bricolage Grotesque',Manrope,sans-serif;font-weight:600;font-size:21px;letter-spacing:-.025em;white-space:nowrap}
+.brand-rule{display:block;height:2px;margin:6px 0 5px;border-radius:2px;background:linear-gradient(90deg,currentColor 0 24%,var(--red) 24% 100%)}
+.nav.light .brand-rule{background:linear-gradient(90deg,#111 0 24%,var(--red) 24% 100%)}
+.brand-text small{align-self:flex-end;font-size:9.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;opacity:.8}
+footer .brand-mark{height:66px}
+footer .brand-text b{font-size:28px}
+footer .brand-text small{font-size:11px}
+@media (max-width:600px){.nav .brand-mark{height:36px}.nav .brand-text b{font-size:17px}.nav .brand-text small{font-size:8px;letter-spacing:.18em}}
+.loader .logo{display:flex;justify-content:center;margin:0 auto 28px;opacity:0;animation:lin .9s var(--ease) .2s forwards}
+.loader .logo .brand-mark{height:60px}
+.loader .logo .brand-text b{font-size:28px}
+@keyframes lin{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.links{display:flex;gap:28px}
+.links a{color:#fff;font-size:14px;font-weight:500;position:relative;opacity:.85}
+.links a::after{content:"";position:absolute;left:0;bottom:-4px;height:1.5px;width:100%;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .5s var(--ease)}
+.links a:hover::after{transform:scaleX(1);transform-origin:left}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 22px;border-radius:999px;font-weight:600;font-size:14px;border:0;cursor:pointer;position:relative;overflow:hidden;isolation:isolate;transition:transform .3s}
+.btn::before{content:"";position:absolute;inset:0;background:var(--ink);transform:translateY(101%);border-radius:inherit;transition:transform .55s var(--ease);z-index:-1}
+.btn:hover::before{transform:translateY(0)}
+.btn-red{background:var(--red);color:#fff}
+.btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.35)}
+.btn-ghost::before{background:#fff}
+.btn-ghost:hover{color:var(--ink)}
+.btn .arrow{width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,.18);display:grid;place-items:center;transition:transform .4s var(--ease)}
+.btn:hover .arrow{transform:rotate(-45deg)}
+.burger{display:none;width:44px;height:44px;border-radius:50%;background:var(--teal);border:0;color:#fff;font-size:18px}
+@media (max-width:900px){.links,.nav .btn{display:none}.burger{display:block}}
+.mnav{position:fixed;inset:0;z-index:99;background:var(--ink);display:flex;flex-direction:column;justify-content:center;padding:32px;gap:10px;clip-path:circle(0 at calc(100% - 40px) 40px);transition:clip-path .8s var(--ease)}
+.mnav.open{clip-path:circle(150% at calc(100% - 40px) 40px)}
+.mnav a{font-family:'Bricolage Grotesque',Manrope,sans-serif;color:#fff;font-size:42px;font-weight:300}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;min-height:100svh;background:radial-gradient(1200px 700px at 75% 30%,#1c2b7a 0%,var(--ink) 60%);color:#fff;overflow:hidden;display:flex;align-items:flex-end;padding-bottom:7vh}
+#neural{position:absolute;inset:0;width:100%;height:100%;opacity:.3;mix-blend-mode:screen}
+.hero-video{position:absolute;inset:0;overflow:hidden;background:var(--ink)}
+.hero-video video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.14);filter:saturate(1) contrast(1.05) brightness(1.05);transition:opacity 1.6s var(--ease),transform 10s linear}
+.hero-video video.on{opacity:1;transform:scale(1)}
+.hero-video::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(100deg,rgba(10,18,48,.72) 0%,rgba(10,18,48,.42) 35%,rgba(15,27,76,.08) 65%,rgba(15,27,76,.12) 100%)}
+.hero-video::after{content:"";position:absolute;inset:0;z-index:1;background:radial-gradient(900px 600px at 80% 35%,rgba(95,227,211,.08),transparent 70%);mix-blend-mode:screen}
+.reel{display:flex;flex-direction:column;gap:12px;min-width:200px;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.reel .cap{opacity:.75;min-height:1.3em;transition:opacity .5s}
+.reel .bars{display:flex;gap:6px}
+.reel .bars span{flex:1;height:2px;background:rgba(255,255,255,.22);overflow:hidden;cursor:pointer}
+.reel .bars i{display:block;height:100%;width:0;background:var(--teal-2)}
+.reel .count{font-family:'Bricolage Grotesque',Manrope,sans-serif;font-size:15px;letter-spacing:.02em;opacity:.9}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,18,48,.35) 0%,transparent 22%,transparent 62%,rgba(10,18,48,.75));pointer-events:none}
+.hero-inner{position:relative;z-index:2}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.28em;text-transform:uppercase;opacity:.85}
+.pulse{width:9px;height:9px;border-radius:50%;background:var(--teal-2);box-shadow:0 0 0 0 rgba(95,227,211,.7);animation:pulseT 1.8s infinite}
+@keyframes pulseT{70%{box-shadow:0 0 0 14px rgba(95,227,211,0)}100%{box-shadow:0 0 0 0 rgba(95,227,211,0)}}
+@keyframes pulse{70%{box-shadow:0 0 0 14px rgba(255,106,91,0)}100%{box-shadow:0 0 0 0 rgba(255,106,91,0)}}
+.hero h1{font-family:'Bricolage Grotesque',Manrope,sans-serif;font-size:clamp(34px,5.8vw,92px);line-height:.95;margin:22px 0 28px;font-weight:600;letter-spacing:-.04em;text-shadow:0 4px 30px rgba(10,18,48,.45)}
+.hero h1 em{font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-style:italic;letter-spacing:-.02em;padding-right:.08em;filter:drop-shadow(0 3px 14px rgba(10,18,48,.6));background:linear-gradient(90deg,#9ff5e9,var(--teal-2) 45%,var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+.line{display:block;overflow:hidden;padding-bottom:.06em}
+.line>span{display:inline-block;transform:translateY(110%)}
+.ready .hero .line>span{transform:none;transition:transform 1.3s var(--ease)}
+.ready .hero .line:nth-child(2)>span{transition-delay:.12s}
+.ready .hero .line:nth-child(3)>span{transition-delay:.24s}
+.hero-row{display:grid;grid-template-columns:1.1fr 1fr 220px;gap:40px;align-items:end}
+.hero-row p{max-width:430px;font-size:17px;line-height:1.6;opacity:.92;text-shadow:0 2px 14px rgba(10,18,48,.6)}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+.scroll-ind{width:26px;height:44px;border:1.5px solid rgba(255,255,255,.4);border-radius:20px;position:relative}
+.scroll-ind::after{content:"";position:absolute;left:50%;top:8px;width:3px;height:8px;margin-left:-1.5px;border-radius:3px;background:#fff;animation:sc 1.8s infinite}
+@keyframes sc{60%{transform:translateY(14px);opacity:0}100%{opacity:0}}
+.fade-up{opacity:0;transform:translateY(30px)}
+.ready .fade-up{opacity:1;transform:none;transition:all 1.2s var(--ease) .5s}
+.hero-badge{position:absolute;right:4vw;top:22vh;z-index:2;width:150px;height:150px}
+.hero-badge svg{width:100%;height:100%;animation:spin 18s linear infinite}
+.hero-badge text{fill:#fff;font-size:10.5px;letter-spacing:3.2px;text-transform:uppercase;font-family:Manrope}
+.hero-badge .core{position:absolute;inset:38px;border-radius:50%;background:var(--red);display:grid;place-items:center;font-size:28px}
+@media (max-width:900px){.hero-row{grid-template-columns:1fr}.reel{max-width:260px}.hero-badge{width:110px;height:110px;top:14vh}.hero-badge .core{inset:28px;font-size:20px}}
+
+@media (max-width:600px){.hero-badge{display:none}}
+
+/* ---------- Marquee ---------- */
+.marquee{background:var(--teal);color:#fff;overflow:hidden;padding:20px 0;transform:rotate(-1.5deg) scale(1.03);margin-top:-18px;position:relative;z-index:3}
+.marquee .track{display:flex;gap:48px;white-space:nowrap;width:max-content;animation:mq 30s linear infinite}
+.marquee span{font-family:'Bricolage Grotesque',Manrope,sans-serif;font-size:clamp(24px,3vw,40px);font-weight:500;letter-spacing:-.02em;display:flex;align-items:center;gap:48px}
+.marquee span::after{content:"✦";font-size:.6em;opacity:.7}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* ---------- Generic reveal ---------- */
+.rv{opacity:0;transform:translateY(50px);transition:opacity 1.1s var(--ease),transform 1.1s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}
+.mask{clip-path:inset(100% 0 0 0);transition:clip-path 1.4s var(--ease)}
+.mask.in{clip-path:inset(0 0 0 0)}
+.tag{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--teal)}
+.tag::before{content:"";width:28px;height:1.5px;background:currentColor}
+section{position:relative}
+h2 em,h3 em,.bigtxt em,.mega em{font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-style:italic;letter-spacing:-.01em;padding-right:.06em}
+
+/* ---------- About ---------- */
+.about{padding:160px 0 120px}
+.about-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:80px;align-items:center}
+.about h2{font-size:clamp(36px,4.6vw,68px);line-height:1.02;margin:22px 0 28px}
+.about h2 em{color:var(--teal);font-style:italic}
+.about p{color:var(--muted);font-size:17px;line-height:1.75;margin-bottom:18px}
+.photo-stack{position:relative;aspect-ratio:4/5}
+.photo-stack .p1{position:absolute;inset:0 18% 12% 0;border-radius:28px;overflow:hidden}
+.photo-stack .p1 img{width:100%;height:118%;object-fit:cover}
+.photo-stack .p2{position:absolute;right:0;bottom:0;width:52%;aspect-ratio:1;border-radius:24px;overflow:hidden;border:8px solid var(--paper);box-shadow:0 30px 60px -20px rgba(10,18,48,.35)}
+.photo-stack .p2 img{width:100%;height:100%;object-fit:cover}
+.photo-stack .stamp{position:absolute;left:-28px;bottom:22%;background:var(--ink);color:#fff;padding:20px 24px;border-radius:20px;box-shadow:0 20px 50px -10px rgba(10,18,48,.5);animation:float 5s ease-in-out infinite}
+.stamp b{font-family:'Bricolage Grotesque',Manrope,sans-serif;font-weight:600;font-size:42px;display:block;line-height:1}
+.stamp small{font-size:12px;opacity:.7;letter-spacing:.1em}
+@keyframes float{50%{transform:translateY(-14px)}}
+.founder{margin-top:110px;display:grid;grid-template-columns:400px 1fr;border-radius:36px;overflow:hidden;background:#fff;box-shadow:0 40px 80px -40px rgba(10,18,48,.25)}
+.f-portrait{position:relative;min-height:440px;background:radial-gradient(420px 320px at 50% 100%,rgba(95,227,211,.35),transparent 70%),linear-gradient(160deg,var(--teal-deep),var(--ink));display:flex;align-items:flex-end;justify-content:center;overflow:hidden}
+.f-portrait::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.14) 1px,transparent 1.4px);background-size:22px 22px;-webkit-mask-image:linear-gradient(180deg,#000,transparent 80%);mask-image:linear-gradient(180deg,#000,transparent 80%)}
+.f-ring{position:absolute;left:50%;bottom:58px;width:300px;height:300px;margin-left:-150px;border-radius:50%;border:1px dashed rgba(159,245,233,.45);animation:spin 40s linear infinite}
+.f-arch{position:relative;width:230px;height:300px;margin-bottom:56px;border-radius:999px 999px 28px 28px;overflow:hidden;border:6px solid rgba(255,255,255,.12);box-shadow:0 30px 60px -20px rgba(0,0,0,.5);clip-path:inset(100% 0 0 0 round 999px 999px 28px 28px);transition:clip-path 1.6s var(--ease)}
+.founder.in .f-arch{clip-path:inset(0 0 0 0 round 999px 999px 28px 28px)}
+.f-arch img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;transform:scale(1.15);transition:transform 2.4s var(--ease)}
+.founder.in .f-arch img{transform:scale(1)}
+.f-sig{position:absolute;left:0;right:0;bottom:22px;text-align:center;font-family:'Instrument Serif',Georgia,serif;font-style:italic;font-size:64px;line-height:1;color:#fff;transform:rotate(-6deg);text-shadow:0 6px 24px rgba(0,0,0,.35);clip-path:inset(0 100% 0 0);transition:clip-path 1.8s var(--ease) .9s}
+.founder.in .f-sig{clip-path:inset(0 0 0 0)}
+.f-chip{position:absolute;z-index:2;top:28px;left:28px;padding:9px 14px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(8px);color:#fff;font-size:12px;font-weight:600;letter-spacing:.08em;animation:float 5s ease-in-out infinite}
+.f-chip.two{top:auto;left:auto;right:24px;bottom:150px;animation-delay:-2.5s}
+.f-body{padding:64px 64px 56px;display:flex;flex-direction:column;justify-content:center}
+.about .f-quote{position:relative;font-family:'Instrument Serif',Georgia,serif;font-size:clamp(28px,2.8vw,42px);line-height:1.2;letter-spacing:-.01em;margin:22px 0 34px;color:var(--ink)}
+.f-quote::before{content:"\201C";position:absolute;right:-6px;top:-96px;font-size:150px;line-height:1;color:var(--teal);opacity:.16}
+.f-quote em{color:var(--teal)}
+.f-meta{display:flex;flex-wrap:wrap;gap:22px 40px;padding-top:28px;border-top:1px solid var(--line)}
+.f-meta b{display:block;font-size:18px}
+.f-meta small{display:block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.f-meta .cred{font-family:'Bricolage Grotesque',Manrope,sans-serif;font-weight:600;font-size:15px;color:var(--teal)}
+@media (max-width:900px){.founder{grid-template-columns:1fr;margin-top:70px}.f-body{padding:40px 26px}.f-portrait{min-height:420px}}
+@media (max-width:900px){.about{padding:110px 0 80px}.about-grid{grid-template-columns:1fr;gap:56px}.photo-stack .stamp{left:8px}}
+
+/* ---------- Stats with ECG ---------- */
+.stats{background:var(--ink);color:#fff;padding:110px 0;overflow:hidden}
+.ecg-line{position:absolute;left:0;right:0;top:50%;height:160px;transform:translateY(-50%);opacity:.22;pointer-events:none}
+.ecg-line path{fill:none;stroke:var(--teal-2);stroke-width:2}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;position:relative}
+.stat{padding:36px 32px;border:1px solid rgba(255,255,255,.12);border-radius:28px;background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,0));backdrop-filter:blur(6px);transition:transform .6s var(--ease),border-color .4s}
+.stat:hover{transform:translateY(-8px);border-color:rgba(95,227,211,.55)}
+.stat .num{font-family:'Bricolage Grotesque',Manrope,sans-serif;font-weight:600;font-size:clamp(56px,7vw,104px);line-height:1;letter-spacing:-.03em}
+.stat .num sup{font-size:.35em;color:var(--teal-2);vertical-align:top;margin-left:4px}
+.stat p{margin-top:14px;opacity:.7;font-size:15px;letter-spacing:.06em}
+@media (max-width:800px){.stats-grid{grid-template-columns:1fr}}
+
+/* ---------- Specialities (expanding panels) ---------- */
+.spec{background:var(--paper);padding:130px 0 140px}
+.spec-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:56px}
+.spec-head h2{font-size:clamp(40px,5.4vw,84px);line-height:1;margin-top:18px}
+.spec-head h2 em{font-style:italic;color:var(--teal)}
+.spec-head p{max-width:360px;color:var(--muted);line-height:1.7}
+.panels{display:flex;gap:14px;height:640px}
+.panel{--active-w:calc((min(1240px,100vw - 48px) - 28px) * .63);position:relative;flex:1 1 0;min-width:0;border-radius:30px;overflow:hidden;color:#fff;background:var(--navy);cursor:pointer;outline:none;transition:flex-grow .9s var(--ease),box-shadow .6s}
+.panel.active{flex-grow:3.4;cursor:default;box-shadow:0 40px 80px -40px rgba(10,18,48,.55)}
+.panel:focus-visible{box-shadow:0 0 0 3px var(--teal)}
+.panel .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.18);filter:brightness(.85);transition:transform 1.6s var(--ease),filter .9s var(--ease)}
+.panel.active .bg{transform:scale(1);filter:none}
+.panel:not(.active):hover .bg{transform:scale(1.1);filter:none}
+.panel .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,18,48,.05) 0%,rgba(10,18,48,.15) 45%,rgba(10,18,48,.85) 100%);transition:opacity .9s}
+.panel .shade.on{background:linear-gradient(180deg,rgba(10,18,48,.05) 0%,rgba(10,18,48,.2) 38%,rgba(10,18,48,.94) 100%);opacity:0}
+.panel.active .shade.on{opacity:1}
+.panel.active .shade:not(.on){opacity:0}
+.p-bar{position:absolute;top:0;left:0;height:3px;width:0;background:var(--teal-2);z-index:3}
+.p-num{position:absolute;top:24px;left:24px;z-index:2;font-family:'Bricolage Grotesque',Manrope,sans-serif;font-weight:600;font-size:13px;letter-spacing:.12em;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(8px)}
+.p-plus{position:absolute;top:22px;right:22px;z-index:2;width:44px;height:44px;border-radius:50%;background:#fff;color:var(--ink);display:grid;place-items:center;font-size:22px;transition:transform .6s var(--ease),opacity .4s}
+.panel:not(.active):hover .p-plus{transform:rotate(90deg)}
+.panel.active .p-plus{transform:rotate(45deg) scale(.6);opacity:0}
+.p-vert{position:absolute;left:22px;bottom:30px;z-index:2;writing-mode:vertical-rl;transform:rotate(180deg);font-family:'Bricolage Grotesque',Manrope,sans-serif;font-weight:600;font-size:34px;letter-spacing:-.02em;white-space:nowrap;transition:opacity .4s}
+.p-vert small{display:block;font-family:Manrope;font-weight:500;font-size:12px;letter-spacing:.2em;text-transform:uppercase;opacity:.65;margin-left:8px}
+.panel.active .p-vert{opacity:0}
+.p-body{position:absolute;left:0;bottom:0;z-index:2;width:var(--active-w);padding:0 40px 36px;opacity:0;transform:translateY(30px);pointer-events:none;transition:opacity .4s,transform .7s var(--ease)}
+.panel.active .p-body{opacity:1;transform:none;pointer-events:auto;transition-delay:.35s}
+.p-kicker{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--teal-2)}
+.p-kicker::before{content:"";width:24px;height:1.5px;background:currentColor}
+.p-title{font-family:'Bricolage Grotesque',Manrope,sans-serif;font-weight:600;font-size:clamp(40px,4.4vw,60px);letter-spacing:-.04em;line-height:1;margin:14px 0 14px}
+.p-body p{max-width:540px;line-height:1.7;opacity:.85;font-size:15.5px}
+.p-tags{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.p-tags li{font-size:12.5px;padding:7px 13px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(6px)}
+.p-foot{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-top:24px;padding-top:22px;border-top:1px solid rgba(255,255,255,.18)}
+.doc{display:flex;align-items:center;gap:14px}
+.doc img{width:54px;height:54px;border-radius:50%;object-fit:cover;object-position:50% 20%;border:2px solid var(--teal-2);background:#fff}
+.doc b{display:block;font-size:15.5px}
+.doc small{display:block;font-size:12.5px;opacity:.7;margin-top:2px}
+.spec-feats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}
+.feat{display:flex;gap:14px;align-items:center;padding:20px 22px;border-radius:22px;background:#fff;border:1px solid var(--line);transition:transform .5s var(--ease),box-shadow .5s}
+.feat:hover{transform:translateY(-4px);box-shadow:0 20px 40px -24px rgba(10,18,48,.35)}
+.feat i{flex:none;width:46px;height:46px;border-radius:14px;background:rgba(11,125,122,.1);color:var(--teal);display:grid;place-items:center}
+.feat svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.feat b{display:block;font-size:15px}
+.feat small{display:block;font-size:13px;color:var(--muted);margin-top:2px}
+.spec-cta{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;margin-top:18px;padding:26px 32px;border-radius:24px;background:var(--teal);color:#fff;position:relative;overflow:hidden}
+.spec-cta::before{content:"";position:absolute;right:-60px;top:-80px;width:260px;height:260px;border-radius:50%;border:1px dashed rgba(255,255,255,.3);animation:spin 30s linear infinite}
+.spec-cta b{font-family:'Bricolage Grotesque',Manrope,sans-serif;font-weight:600;font-size:clamp(20px,2vw,26px);letter-spacing:-.02em;display:block}
+.spec-cta span{opacity:.8;font-size:15px}
+.spec-cta .btn{background:#fff;color:var(--teal);position:relative}
+.spec-cta .btn::before{background:var(--ink)}
+.spec-cta .btn:hover{color:#fff}
+@media (max-width:1000px){.spec-feats{grid-template-columns:1fr 1fr}}
+@media (max-width:900px){
+  .panels{flex-direction:column;height:auto}
+  .panel,.panel.active{flex:none;min-height:560px;display:flex;align-items:flex-end;cursor:default;padding-top:76px}
+  .panel .shade.on{background:linear-gradient(180deg,rgba(10,18,48,.35) 0%,rgba(10,18,48,.7) 30%,rgba(10,18,48,.95) 100%)}
+  .panel .bg{transform:none;filter:none}
+  .panel .shade:not(.on){opacity:0}.panel .shade.on{opacity:1}
+  .p-vert,.p-plus,.p-bar{display:none}
+  .p-body,.panel.active .p-body{position:relative;width:100%;opacity:1;transform:none;pointer-events:auto;padding:0 24px 28px}
+}
+@media (max-width:560px){.spec-feats{grid-template-columns:1fr}.spec-cta{padding:24px}}
+
+/* ---------- Centre for Neurosciences ---------- */
+.epi{background:radial-gradient(760px 560px at 24% 42%,rgba(95,227,211,.2),transparent 70%),radial-gradient(600px 400px at 90% 10%,rgba(95,224,255,.12),transparent 70%),#f3f9f9;color:var(--ink);padding:140px 0 130px;overflow:hidden}
+.epi-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:60px;align-items:center}
+.neuro-stage{position:relative;aspect-ratio:640/560;width:100%;max-width:640px;margin-inline:auto}
+.neuro-stage>svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.ns-orbit{transform-box:view-box;transform-origin:320px 280px;animation:spin 32s linear infinite}
+.ns-orbit.rev{animation-duration:46s;animation-direction:reverse}
+.ns-sphere{transform-box:view-box;transform-origin:320px 280px;animation:nsBreathe 6s ease-in-out infinite}
+@keyframes nsBreathe{50%{transform:scale(1.025)}}
+@keyframes nsFloat{50%{transform:translateY(-8px)}}
+.ns-wave{fill:none;stroke:var(--teal);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.55;stroke-dasharray:420;stroke-dashoffset:420;animation:nsWave 3.6s ease-in-out infinite}
+.ns-wave.r{animation-delay:1.8s}
+@keyframes nsWave{0%{stroke-dashoffset:420}55%{stroke-dashoffset:0}100%{stroke-dashoffset:-420}}
+.ns-link{fill:none;stroke:var(--ink);stroke-width:1.4;opacity:.55;stroke-dasharray:var(--len);stroke-dashoffset:var(--len)}
+.neuro-stage.in .ns-link{stroke-dashoffset:0;transition:stroke-dashoffset 1.4s var(--ease) .8s}
+.ns-dot{fill:var(--ink);stroke:#fff;stroke-width:3}
+.ns-dot-ring{fill:none;stroke:var(--ink);opacity:0;transform-box:fill-box;transform-origin:center;animation:nsPing 2.4s ease-out infinite}
+@keyframes nsPing{0%{opacity:.5;transform:scale(.6)}100%{opacity:0;transform:scale(2.4)}}
+.ns-head{position:absolute;left:6.25%;top:-2%;width:87.5%;aspect-ratio:1;animation:nsFloat 8s ease-in-out infinite;mix-blend-mode:multiply}
+.ns-head img{width:100%;height:100%;display:block;-webkit-mask-image:radial-gradient(ellipse 50% 54% at 50% 46%,#000 64%,transparent 100%);mask-image:radial-gradient(ellipse 50% 54% at 50% 46%,#000 64%,transparent 100%);opacity:0;transform:scale(1.06);filter:blur(6px);transition:opacity 1.4s var(--ease),transform 1.8s var(--ease),filter 1.4s var(--ease)}
+.neuro-stage.in .ns-head img{opacity:1;transform:none;filter:none}
+.ns-core{position:absolute;left:49%;top:30%;width:34%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(255,196,120,.75),rgba(255,170,90,.25) 35%,transparent 68%);mix-blend-mode:screen;animation:nsCore 3.4s ease-in-out infinite;pointer-events:none}
+@keyframes nsCore{50%{transform:translate(-50%,-50%) scale(1.25);opacity:.55}}
+.ns-spark{position:absolute;left:var(--x);top:var(--y);width:6px;height:6px;border-radius:50%;background:#fff;box-shadow:0 0 10px 3px rgba(120,200,255,.9);opacity:0;animation:nsTwinkle 3.6s ease-in-out infinite;animation-delay:var(--d);pointer-events:none}
+@keyframes nsTwinkle{0%,100%{opacity:0;transform:scale(.4)}45%{opacity:1;transform:scale(1)}}
+.ns-top{position:absolute;inset:0;width:100%;height:100%;overflow:visible;z-index:1;pointer-events:none}
+.ns-chip{position:absolute;z-index:2;display:flex;align-items:center;gap:12px;padding:8px 20px 8px 8px;border-radius:999px;background:rgba(255,255,255,.88);border:1px solid rgba(255,255,255,.9);box-shadow:0 18px 40px -18px rgba(10,18,48,.3);backdrop-filter:blur(10px);font-size:15px;font-weight:500;white-space:nowrap;animation:float 6s ease-in-out infinite;opacity:0;transform:translateY(16px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.neuro-stage.in .ns-chip{opacity:1;transform:none}
+.ns-chip i{width:42px;height:42px;border-radius:50%;background:rgba(11,125,122,.1);display:grid;place-items:center;color:var(--ink)}
+.ns-chip svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.ns-chip.c1{left:2%;top:13%;transition-delay:1s}
+.ns-chip.c2{left:70%;top:6%;animation-delay:-2s;transition-delay:1.15s}
+.ns-chip.c3{left:3%;top:80%;animation-delay:-4s;transition-delay:1.3s}
+.epi .tag{color:var(--teal)}
+.epi h2{font-size:clamp(44px,5.6vw,92px);line-height:.98;margin:22px 0 26px;letter-spacing:-.045em;color:var(--ink)}
+.epi h2 em{display:block;font-size:1.04em;color:var(--teal);letter-spacing:-.02em}
+.epi .lead{color:#4a5272;line-height:1.7;font-size:clamp(16px,1.35vw,19px);max-width:600px}
+.epi-actions{display:flex;align-items:center;gap:30px;flex-wrap:wrap;margin-top:34px}
+.epi-actions .btn{padding:16px 26px;font-size:16px}
+.link-arrow{display:inline-flex;align-items:center;gap:10px;font-weight:700;color:var(--ink);padding-bottom:4px;border-bottom:2px solid var(--teal);transition:gap .4s var(--ease),color .3s}
+.link-arrow:hover{gap:16px;color:var(--teal)}
+.epi-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:70px}
+.ecard{display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;padding:26px 24px;border-radius:22px;background:#fff;border:1px solid rgba(15,27,76,.07);box-shadow:0 20px 40px -32px rgba(10,18,48,.4);transition:transform .5s var(--ease),box-shadow .5s}
+.ecard:hover{transform:translateY(-6px);box-shadow:0 30px 60px -30px rgba(10,18,48,.4)}
+.ecard .ic{width:72px;height:72px;border-radius:50%;background:rgba(11,125,122,.1);color:var(--teal);display:grid;place-items:center;transition:background .5s,color .5s}
+.ecard:hover .ic{background:var(--teal);color:#fff}
+.ecard .ic svg{width:36px;height:36px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.ecard b{display:block;font-family:'Bricolage Grotesque',Manrope,sans-serif;font-weight:600;font-size:20px;letter-spacing:-.02em;margin-bottom:6px}
+.ecard small{display:block;color:var(--muted);font-size:14.5px;line-height:1.55}
+.ecard .go{width:40px;height:40px;border-radius:50%;background:rgba(11,125,122,.08);color:var(--teal);display:grid;place-items:center;transition:transform .4s var(--ease),background .4s,color .4s}
+.ecard:hover .go{transform:translateX(4px);background:var(--teal);color:#fff}
+@media (max-width:1100px){.epi-cards{grid-template-columns:1fr}}
+@media (max-width:900px){.epi{padding:100px 0}.epi-grid{grid-template-columns:1fr;gap:30px}.neuro-stage{max-width:560px}.epi-cards{margin-top:44px}}
+@media (max-width:600px){.ns-chip.c2{left:auto;right:0}.ns-chip{font-size:12px;gap:8px;padding:5px 12px 5px 5px}.ns-chip i{width:30px;height:30px}.ns-chip svg{width:16px;height:16px}.ecard{grid-template-columns:auto 1fr;padding:22px 20px}.ecard .go{display:none}.ecard .ic{width:64px;height:64px}.ecard .ic svg{width:30px;height:30px}}
+
+/* ---------- Testimonials ---------- */
+.voices{padding:150px 0;background:var(--paper)}
+.voices-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px}
+.voices h2{font-size:clamp(40px,5vw,74px);line-height:1;margin-top:18px}
+.voices h2 em{font-style:italic;color:var(--teal)}
+.qwrap{position:relative;min-height:340px}
+.quote{position:absolute;inset:0;opacity:0;pointer-events:none}
+.quote.on{opacity:1;pointer-events:auto}
+.quote blockquote{font-family:'Instrument Serif',Georgia,serif;font-weight:400;font-size:clamp(26px,2.9vw,40px);line-height:1.25;letter-spacing:-.005em}
+.quote blockquote .w{display:inline-block;opacity:0;transform:translateY(16px);filter:blur(6px)}
+.quote.on blockquote .w{opacity:1;transform:none;filter:none;transition:all .8s var(--ease)}
+.quote cite{display:flex;align-items:center;gap:14px;margin-top:30px;font-style:normal;font-weight:600}
+.quote cite i{width:44px;height:44px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-style:normal;font-family:'Bricolage Grotesque',Manrope,sans-serif}
+.quote cite small{display:block;font-weight:500;color:var(--muted);font-size:13px}
+.qnav{display:flex;gap:10px;margin-top:40px;align-items:center}
+.qnav button{width:54px;height:54px;border-radius:50%;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:18px;transition:all .3s}
+.qnav button:hover{background:var(--ink);color:#fff}
+.qbar{flex:1;height:2px;background:var(--line);margin-left:16px;overflow:hidden}
+.qbar i{display:block;height:100%;background:var(--teal);width:0}
+.stars{color:#f5a623;letter-spacing:4px;margin-bottom:22px;font-size:18px}
+@media (max-width:900px){.voices{padding:100px 0}.voices-grid{grid-template-columns:1fr;gap:40px}.qwrap{min-height:420px}}
+
+/* ---------- Gallery ---------- */
+.gallery{position:relative;padding:150px 0 290px;margin-bottom:-140px;color:#fff;overflow:hidden;
+  background:radial-gradient(700px 480px at 85% 10%,rgba(95,224,255,.16),transparent 70%),radial-gradient(600px 500px at 0% 90%,rgba(95,227,211,.1),transparent 70%),linear-gradient(160deg,#16246a 0%,#0f1b4c 45%,#0a1230 100%)}
+.gallery::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(255,255,255,.09) 1px,transparent 1.4px);background-size:26px 26px;-webkit-mask-image:linear-gradient(180deg,#000,transparent 70%);mask-image:linear-gradient(180deg,#000,transparent 70%)}
+.gallery .wrap{position:relative}
+.gallery .tag{color:var(--teal-2)}
+.gallery .gi{box-shadow:0 30px 60px -30px rgba(0,0,0,.6);outline:1px solid rgba(255,255,255,.08);outline-offset:-1px}
+.g-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:50px;gap:20px}
+.g-head h2{font-size:clamp(40px,5vw,74px);line-height:1;margin-top:18px}
+.g-head h2 em{font-style:italic;color:var(--teal-2)}
+.ggrid{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:120px;gap:16px}
+.gi{border-radius:24px;overflow:hidden;position:relative;isolation:isolate;background:var(--navy)}
+.gi img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.gi:hover img{transform:scale(1.08)}
+.gi::after{content:attr(data-label);position:absolute;left:16px;bottom:16px;color:#fff;font-size:13px;font-weight:600;padding:8px 14px;border-radius:999px;z-index:2;background:rgba(10,18,48,.55);backdrop-filter:blur(8px);opacity:0;transform:translateY(10px);transition:all .5s var(--ease)}
+.gi:hover::after{opacity:1;transform:none}
+.gi:nth-child(1){grid-column:span 5;grid-row:span 3}
+.gi:nth-child(2){grid-column:span 4;grid-row:span 2}
+.gi:nth-child(3){grid-column:span 3;grid-row:span 2}
+.gi:nth-child(4){grid-column:span 3;grid-row:span 2}
+.gi:nth-child(5){grid-column:span 4;grid-row:span 2}
+.gi:nth-child(6){grid-column:span 5;grid-row:span 1}
+@media (max-width:800px){.ggrid{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px}.gi:nth-child(n){grid-column:span 1;grid-row:span 1}.gi:nth-child(1){grid-column:span 2;grid-row:span 2}}
+
+/* ---------- Emergency / CTA ---------- */
+.emerg{background:var(--red);color:#fff;padding:130px 0;overflow:hidden}
+.emerg .bigtxt{font-family:'Bricolage Grotesque',Manrope,sans-serif;font-weight:600;font-size:clamp(60px,13vw,220px);line-height:.88;letter-spacing:-.04em}
+.emerg .bigtxt em{font-style:italic;opacity:.55}
+.emerg-row{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:60px;align-items:end}
+.phones a{display:flex;justify-content:space-between;align-items:center;padding:22px 0;border-top:1px solid rgba(255,255,255,.3);font-family:'Bricolage Grotesque',Manrope,sans-serif;font-size:clamp(28px,3.4vw,48px);font-weight:500;letter-spacing:-.03em;transition:padding .5s var(--ease)}
+.phones a:last-child{border-bottom:1px solid rgba(255,255,255,.3)}
+.phones a:hover{padding-left:20px}
+.phones a span{font-family:Manrope;font-size:13px;letter-spacing:.2em;text-transform:uppercase;opacity:.75}
+.form{background:#fff;color:var(--ink);border-radius:28px;padding:34px;display:grid;gap:14px}
+.form h3{font-family:'Bricolage Grotesque',Manrope,sans-serif;font-weight:600;font-size:32px}
+.form input,.form select{width:100%;padding:16px 18px;border-radius:14px;border:1px solid var(--line);background:var(--paper);font:inherit;font-size:15px;outline:none;transition:border-color .3s,box-shadow .3s}
+.form input:focus,.form select:focus{border-color:var(--navy);box-shadow:0 0 0 4px rgba(15,27,76,.08)}
+.form .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form .btn{justify-content:center;background:var(--ink);color:#fff}
+.form .btn::before{background:var(--red)}
+.form .note{font-size:13px;color:var(--muted);min-height:18px}
+@media (max-width:900px){.emerg{padding:100px 0}.emerg-row{grid-template-columns:1fr}.form .row{grid-template-columns:1fr}}
+
+/* ---------- Curved section edges ---------- */
+/* --ct is the top curve depth; JS flattens it as the section scrolls into place */
+.curve{--ct:120px;--cb:90px;position:relative;z-index:2;border-radius:50% 50% 0 0/var(--ct) var(--ct) 0 0}
+.curve.curve-b{border-radius:50% 50% 50% 50%/var(--ct) var(--ct) var(--cb) var(--cb)}
+.stats.curve{margin-top:-40px}
+.emerg.curve{margin-bottom:-100px}
+.emerg + footer{padding-top:200px}
+@media (max-width:700px){.curve{--cb:44px}}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-stopped{overflow:hidden}
+
+/* ---------- Footer ---------- */
+footer{background:var(--ink);color:#fff;padding:100px 0 30px;overflow:hidden}
+.f-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:40px}
+footer h4{font-size:12px;letter-spacing:.24em;text-transform:uppercase;opacity:.5;margin-bottom:20px;font-weight:600}
+footer p,footer a{opacity:.8;line-height:1.9;font-size:15px}
+footer a:hover{opacity:1;color:var(--teal-2)}
+.f-links a{display:block}
+.mega{font-family:'Bricolage Grotesque',Manrope,sans-serif;font-weight:600;font-size:clamp(44px,12.4vw,190px);letter-spacing:-.05em;line-height:.8;margin-top:90px;background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(255,255,255,.05));-webkit-background-clip:text;background-clip:text;color:transparent;white-space:nowrap}
+.f-bottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-top:26px;margin-top:30px;border-top:1px solid rgba(255,255,255,.12);font-size:13px;opacity:.55}
+.map{border-radius:20px;overflow:hidden;height:180px;filter:grayscale(1) invert(.92) hue-rotate(180deg);opacity:.85}
+.map iframe{width:100%;height:100%;border:0}
+@media (max-width:900px){.f-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.f-grid{grid-template-columns:1fr}}
+
+/* ---------- Floating SOS ---------- */
+.sos{position:fixed;right:22px;bottom:22px;z-index:90;display:flex;align-items:center;gap:10px;background:var(--ink);color:#fff;padding:8px 18px 8px 8px;border-radius:999px;box-shadow:0 20px 40px -10px rgba(10,18,48,.5);font-weight:600;font-size:14px;transform:translateY(120px);transition:transform .7s var(--ease)}
+.sos.show{transform:none}
+.sos i{width:40px;height:40px;border-radius:50%;background:var(--red);display:grid;place-items:center;font-style:normal;animation:pulse 1.8s infinite}
+
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.rv,.fade-up,.line>span{opacity:1!important;transform:none!important}.mask{clip-path:none!important}}
+</style>
+</head>
+<body>
+
+<!-- Preloader -->
+<div class="loader" id="loader">
+  <div>
+    <div class="logo brand" aria-hidden="true"><img class="brand-mark" src="img/logo-mark.png" alt="" width="203" height="400"><span class="brand-text"><b>Naveen Hospitals</b><i class="brand-rule"></i><small>Passion for care</small></span></div>
+    <svg viewBox="0 0 420 90"><path d="M0 45 H120 L135 45 L145 20 L158 75 L172 5 L186 85 L198 45 L215 45 L225 35 L235 45 H420"/></svg>
+    <div class="pct" id="pct">0%</div>
+  </div>
+</div>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<!-- Nav -->
+<nav class="nav" id="nav">
+  <a href="#top" class="brand" aria-label="Naveen Hospitals — Passion for care, back to top"><img class="brand-mark" src="img/logo-mark.png" alt="" width="203" height="400"><span class="brand-text"><b>Naveen Hospitals</b><i class="brand-rule"></i><small>Passion for care</small></span></a>
+  <div class="links">
+    <a href="#about">About</a>
+    <a href="#specialities">Departments</a>
+    <a href="#epilepsy">Neurosciences</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="#contact" class="btn btn-red magnetic">Book Appointment <span class="arrow">→</span></a>
+  <button class="burger" id="burger" aria-label="Menu">☰</button>
+</nav>
+<div class="mnav" id="mnav">
+  <a href="#about">About</a><a href="#specialities">Departments</a><a href="#epilepsy">Neurosciences</a><a href="#gallery">Gallery</a><a href="#contact">Contact</a>
+</div>
+
+<!-- Hero -->
+<header class="hero" id="top">
+  <div class="hero-video" aria-hidden="true">
+    <video muted playsinline preload="auto" poster="https://www.naveenhospitals.com/img/slider/slide2.jpg"></video>
+    <video muted playsinline preload="auto"></video>
+  </div>
+  <canvas id="neural"></canvas>
+  <div class="hero-badge">
+    <svg viewBox="0 0 150 150"><defs><path id="circ" d="M75,75 m-58,0 a58,58 0 1,1 116,0 a58,58 0 1,1 -116,0"/></defs><text><textPath href="#circ">24×7 Emergency · Neuro Care · Guntur ·</textPath></text></svg>
+    <div class="core">✚</div>
+  </div>
+  <div class="wrap hero-inner">
+    <span class="eyebrow fade-up"><span class="pulse"></span>Centre for Neurosciences · Guntur</span>
+    <h1>
+      <span class="line"><span>Where every</span></span>
+      <span class="line"><span><em>neuron</em> is met</span></span>
+      <span class="line"><span>with care.</span></span>
+    </h1>
+    <div class="hero-row fade-up">
+      <p>A multispecialty hospital in the heart of Guntur — delivering best‑in‑class neurological treatment, comprehensive epilepsy care and advanced surgery with compassion and commitment, at a reasonable price.</p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-red magnetic">Book an Appointment <span class="arrow">→</span></a>
+        <a href="tel:9493438552" class="btn btn-ghost magnetic">☎ Emergency</a>
+      </div>
+      <div class="reel"><div class="count"><b id="reelNum">01</b> / 04</div><div class="bars" id="reelBars"><span><i></i></span><span><i></i></span><span><i></i></span><span><i></i></span></div><div class="cap" id="reelCap">An expert medical team</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="marquee"><div class="track">
+  <span>Neurology</span><span>Epilepsy Care</span><span>General Surgery</span><span>Ophthalmology</span><span>Day‑Care Procedures</span><span>24×7 Emergency</span>
+  <span>Neurology</span><span>Epilepsy Care</span><span>General Surgery</span><span>Ophthalmology</span><span>Day‑Care Procedures</span><span>24×7 Emergency</span>
+</div></div>
+
+<!-- About -->
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="photo-stack">
+      <div class="p1 mask"><img data-speed="-0.08" src="https://www.naveenhospitals.com/img/slider/youtube-thumbnail.jpg" alt="Naveen Hospitals building, Guntur"></div>
+      <div class="p2 mask"><img src="https://www.naveenhospitals.com/img/gallery/gallery2.jpg" alt="Hospital facility"></div>
+      <div class="stamp"><b data-count="24709">0</b><small>HAPPY PATIENTS</small></div>
+    </div>
+    <div>
+      <span class="tag rv">Welcome to Naveen Hospitals</span>
+      <h2 class="serif rv d1">Clinical excellence, <em>delivered</em> with a human touch.</h2>
+      <p class="rv d2">Naveen Hospitals is a multispecialty hospital located in the heart of Guntur city, built to serve people with utmost care, compassion and commitment.</p>
+      <p class="rv d2">Our hospital is an epitome of clinical excellence — we strive to provide patients with the best-in-class neurological treatment possible, at a very reasonable price.</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <article class="founder" id="founder">
+      <div class="f-portrait">
+        <span class="f-ring"></span>
+        <span class="f-chip">DM · Neurology</span>
+        <span class="f-chip two">Founder &amp; CEO</span>
+        <div class="f-arch"><img src="https://www.naveenhospitals.com/img/d1.jpg" alt="Dr. Naveen Vandanapu, Neurologist and CEO of Naveen Hospitals"></div>
+        <div class="f-sig">Naveen V.</div>
+      </div>
+      <div class="f-body">
+        <span class="tag rv">A note from our founder</span>
+        <p class="f-quote rv d1">We strive to give every patient <em>best‑in‑class</em> neurological treatment — with utmost care, compassion and commitment, at a very reasonable price.</p>
+        <div class="f-meta rv d2">
+          <div><b>Dr. Naveen Vandanapu</b><small>Founder &amp; CEO · Neurologist</small></div>
+          <div><span class="cred">MBBS, MD (General Medicine), DM (Neurology)</span><small>Qualifications</small></div>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- Stats -->
+<section class="stats curve curve-b">
+  <svg class="ecg-line" viewBox="0 0 1600 160" preserveAspectRatio="none"><path id="ecgPath" d="M0 80 H260 L280 80 L295 40 L312 130 L330 10 L348 150 L365 80 L395 80 L410 65 L425 80 H760 L780 80 L795 40 L812 130 L830 10 L848 150 L865 80 L895 80 L910 65 L925 80 H1260 L1280 80 L1295 40 L1312 130 L1330 10 L1348 150 L1365 80 L1395 80 L1410 65 L1425 80 H1600"/></svg>
+  <div class="wrap stats-grid">
+    <div class="stat rv"><div class="num"><span data-count="5932">0</span><sup>+</sup></div><p>SURGERIES PERFORMED</p></div>
+    <div class="stat rv d1"><div class="num"><span data-count="24709">0</span><sup>+</sup></div><p>HAPPY PATIENTS</p></div>
+    <div class="stat rv d2"><div class="num"><span data-count="13">0</span></div><p>QUALITY DOCTORS</p></div>
+  </div>
+</section>
+
+<!-- Specialities -->
+<section class="spec" id="specialities">
+  <div class="wrap spec-head">
+    <div>
+      <span class="tag rv">Our Specialities</span>
+      <h2 class="serif rv d1">Dedicated <em>departments</em>,<br>one standard of care.</h2>
+    </div>
+    <p class="rv d2">Experienced specialists, modern operation theatres and trained support staff — from the simplest procedures to the most complex advanced surgeries.</p>
+  </div>
+  <div class="wrap">
+    <div class="panels rv d2" id="panels">
+      <article class="panel active" tabindex="0" aria-label="Neurology">
+        <img class="bg" src="https://www.naveenhospitals.com/img/department/n.jpg" alt="">
+        <div class="shade"></div><div class="shade on"></div>
+        <span class="p-bar"></span>
+        <span class="p-num">01</span>
+        <span class="p-plus" aria-hidden="true">+</span>
+        <h3 class="p-vert">Neurology<small>Brain · Spine · Nerves</small></h3>
+        <div class="p-body">
+          <span class="p-kicker">Flagship · Centre for Neurosciences</span>
+          <h3 class="p-title">Neurology</h3>
+          <p>Comprehensive care for disorders of the brain, spine and nervous system — delivered by a multidisciplinary team with the best available technology.</p>
+          <ul class="p-tags"><li>Epilepsy</li><li>Stroke</li><li>Headache &amp; Migraine</li><li>Spine</li><li>Movement Disorders</li></ul>
+          <div class="p-foot">
+            <div class="doc"><img src="https://www.naveenhospitals.com/img/d1.jpg" alt="Dr. Naveen Vandanapu"><div><b>Dr. Naveen Vandanapu</b><small>Neurologist · DM (Neurology)</small></div></div>
+            <a href="#contact" class="btn btn-red">Book a visit <span class="arrow">→</span></a>
+          </div>
+        </div>
+      </article>
+      <article class="panel" tabindex="0" aria-label="General Surgery">
+        <img class="bg" src="https://www.naveenhospitals.com/img/department/department.jpg" alt="">
+        <div class="shade"></div><div class="shade on"></div>
+        <span class="p-bar"></span>
+        <span class="p-num">02</span>
+        <span class="p-plus" aria-hidden="true">+</span>
+        <h3 class="p-vert">General Surgery<small>Day‑care · Advanced</small></h3>
+        <div class="p-body">
+          <span class="p-kicker">40+ years of combined experience</span>
+          <h3 class="p-title">General Surgery</h3>
+          <p>The whole spectrum of surgical care — from the simplest procedures to complex advanced surgeries — with day‑care options in sophisticated operation theatres.</p>
+          <ul class="p-tags"><li>Day‑care Surgery</li><li>Laparoscopic</li><li>Advanced Procedures</li></ul>
+          <div class="p-foot">
+            <div class="doc"><img src="https://www.naveenhospitals.com/img/d2.jpg" alt="Dr. V. Lakshman"><div><b>Dr. V. Lakshman</b><small>Surgeon · M.S. (Gen), F.R.S.H. (London)</small></div></div>
+            <a href="#contact" class="btn btn-red">Book a visit <span class="arrow">→</span></a>
+          </div>
+        </div>
+      </article>
+      <article class="panel" tabindex="0" aria-label="Ophthalmology">
+        <img class="bg" src="https://www.naveenhospitals.com/img/department/o.jpg" alt="">
+        <div class="shade"></div><div class="shade on"></div>
+        <span class="p-bar"></span>
+        <span class="p-num">03</span>
+        <span class="p-plus" aria-hidden="true">+</span>
+        <h3 class="p-vert">Ophthalmology<small>Vision · Eye surgery</small></h3>
+        <div class="p-body">
+          <span class="p-kicker">First‑class eye care</span>
+          <h3 class="p-title">Ophthalmology</h3>
+          <p>Accurate diagnostics for vision problems and surgical treatment for complex conditions of the eye, all under one roof.</p>
+          <ul class="p-tags"><li>Vision Diagnostics</li><li>Eye Surgery</li><li>Complex Conditions</li></ul>
+          <div class="p-foot">
+            <div class="doc"><img src="https://www.naveenhospitals.com/img/d3.jpg" alt="Dr. Pavani T"><div><b>Dr. Pavani T</b><small>Ophthalmologist · MS (Ophthalmology)</small></div></div>
+            <a href="#contact" class="btn btn-red">Book a visit <span class="arrow">→</span></a>
+          </div>
+        </div>
+      </article>
+    </div>
+    <div class="spec-feats">
+      <div class="feat rv"><i><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></i><div><b>Day‑care surgeries</b><small>Home the same day</small></div></div>
+      <div class="feat rv d1"><i><svg viewBox="0 0 24 24"><path d="M4 20h16M6 20V9l6-5 6 5v11"/><path d="M12 11v6M9 14h6"/></svg></i><div><b>Modern theatres</b><small>Trained support staff</small></div></div>
+      <div class="feat rv d2"><i><svg viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4a2 2 0 0 0 1.8-3l-5-9V3"/><path d="M7.5 15h9"/></svg></i><div><b>NABL‑accredited lab</b><small>Reliable diagnostics</small></div></div>
+      <div class="feat rv d3"><i><svg viewBox="0 0 24 24"><path d="M12 3s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z"/><path d="M9.5 15a2.5 2.5 0 0 0 2.5 2.5"/></svg></i><div><b>NABH blood bank</b><small>Safe, on‑site supply</small></div></div>
+    </div>
+    <div class="spec-cta rv">
+      <div><b>Not sure which department you need?</b><span>Our care team will guide you to the right specialist.</span></div>
+      <a href="#contact" class="btn">Talk to our care team <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- Centre for Neurosciences -->
+<section class="epi curve curve-b" id="epilepsy">
+  <div class="wrap">
+    <div class="epi-grid">
+      <div class="neuro-stage rv" id="brain">
+        <svg viewBox="0 0 640 560" aria-hidden="true">
+          <defs>
+            <radialGradient id="sphereFill" cx="42%" cy="38%" r="65%"><stop offset="0" stop-color="#ffffff"/><stop offset=".55" stop-color="#e6f5f7"/><stop offset="1" stop-color="#bfe2ea"/></radialGradient>
+            <radialGradient id="brainFill" cx="45%" cy="40%" r="70%"><stop offset="0" stop-color="#f4fbff"/><stop offset=".55" stop-color="#cfe6f6"/><stop offset="1" stop-color="#9cc8e8"/></radialGradient>
+            <radialGradient id="warmGlow"><stop offset="0" stop-color="#ffb066" stop-opacity="1"/><stop offset="1" stop-color="#ffb35c" stop-opacity="0"/></radialGradient>
+            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            <filter id="groove" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="2"/></filter>
+            <filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="14"/></filter>
+          </defs>
+          <circle cx="320" cy="280" r="262" fill="none" stroke="#7fc6cf" stroke-opacity=".35"/>
+          <g class="ns-orbit"><circle cx="320" cy="280" r="236" fill="none" stroke="#5fb8c4" stroke-opacity=".45" stroke-dasharray="2 7"/><circle cx="320" cy="44" r="5" fill="#3fb0be"/><circle cx="556" cy="280" r="3.5" fill="#3fb0be" opacity=".7"/></g>
+          <g class="ns-orbit rev"><circle cx="84" cy="280" r="4" fill="#9fd8f0"/><circle cx="320" cy="516" r="3" fill="#3fb0be" opacity=".6"/></g>
+          <path class="ns-wave" d="M8 280 H70 L82 262 L94 300 L106 220 L118 336 L130 268 L142 290 L154 280 H196"/>
+          <path class="ns-wave r" d="M444 280 H486 L498 268 L510 296 L522 230 L534 326 L546 262 L558 292 L570 280 H632"/>
+          <g class="ns-sphere">
+            <circle cx="320" cy="290" r="212" fill="#5fe3d3" opacity=".18" filter="url(#soft)"/>
+            <circle cx="320" cy="280" r="200" fill="url(#sphereFill)" stroke="#fff" stroke-width="3"/>
+            <ellipse cx="250" cy="170" rx="110" ry="54" fill="#fff" opacity=".55" transform="rotate(-30 250 170)"/>
+          </g>
+        </svg>
+        <div class="ns-head">
+          <img src="img/brain-head.webp" srcset="img/brain-head-640.webp 640w, img/brain-head.webp 1024w" sizes="(max-width:900px) 90vw, 560px" alt="Illustration of a woman in profile with a glowing, translucent brain and spine" width="1024" height="1024">
+          <span class="ns-core"></span>
+          <span class="ns-spark" style="--x:38%;--y:22%;--d:0s"></span><span class="ns-spark" style="--x:57%;--y:19%;--d:-.7s"></span>
+          <span class="ns-spark" style="--x:46%;--y:36%;--d:-1.4s"></span><span class="ns-spark" style="--x:63%;--y:31%;--d:-2.1s"></span>
+          <span class="ns-spark" style="--x:33%;--y:34%;--d:-2.8s"></span><span class="ns-spark" style="--x:47%;--y:58%;--d:-1s"></span>
+          <span class="ns-spark" style="--x:52%;--y:26%;--d:-3.3s"></span><span class="ns-spark" style="--x:41%;--y:46%;--d:-.3s"></span>
+        </div>
+        <svg class="ns-top" viewBox="0 0 640 560" aria-hidden="true">
+          <path class="ns-link" d="M118 128 C118 160 150 178 205 182"/>
+          <path class="ns-link" d="M540 84 C540 120 470 140 394 140"/>
+          <path class="ns-link" d="M214 458 C258 452 290 400 297 332"/>
+          <circle class="ns-dot-ring" cx="205" cy="182" r="7"/><circle class="ns-dot" cx="205" cy="182" r="6"/>
+          <circle class="ns-dot-ring" cx="394" cy="140" r="7"/><circle class="ns-dot" cx="394" cy="140" r="6"/>
+          <circle class="ns-dot-ring" cx="297" cy="332" r="7"/><circle class="ns-dot" cx="297" cy="332" r="6"/>
+        </svg>
+        <span class="ns-chip c1"><i><svg viewBox="0 0 24 24"><path d="M2 12h4l2-5 4 10 2-5h8"/></svg></i>EEG Monitoring</span>
+        <span class="ns-chip c2"><i><svg viewBox="0 0 24 24"><path d="M12 3a7 7 0 0 0-7 7v3l-2 3h3v3a2 2 0 0 0 2 2h3"/><path d="M12 3a7 7 0 0 1 7 7v3l2 3h-3v3a2 2 0 0 1-2 2h-3"/><circle cx="12" cy="11" r="3"/></svg></i>Neuro Imaging</span>
+        <span class="ns-chip c3"><i><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3"/><circle cx="5.5" cy="10" r="2.2"/><circle cx="18.5" cy="10" r="2.2"/><path d="M6.5 20a5.5 5.5 0 0 1 11 0"/><path d="M2 19a3.8 3.8 0 0 1 4.3-3.7M22 19a3.8 3.8 0 0 0-4.3-3.7"/></svg></i>Personalised Care</span>
+      </div>
+      <div>
+        <span class="tag rv">Centre for Neurosciences</span>
+        <h2 class="serif rv d1">Expert care for <em>every mind.</em></h2>
+        <p class="lead rv d2">Comprehensive epilepsy and neurological care in Guntur. Our expert neurosciences team uses advanced diagnostics and personalised treatment plans to manage a wide range of neurological conditions — supporting every patient and family through every stage.</p>
+        <div class="epi-actions rv d3">
+          <a href="#contact" class="btn btn-red magnetic">Consult a Specialist <span class="arrow">→</span></a>
+          <a href="#specialities" class="link-arrow">Explore Treatments <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="epi-cards">
+      <a href="#contact" class="ecard rv"><span class="ic"><svg viewBox="0 0 40 40"><path d="M10 6H8v10a8 8 0 0 0 16 0V6h-2"/><path d="M16 24v4a7 7 0 0 0 14 0v-4"/><circle cx="30" cy="21" r="3"/></svg></span><span><b>Accurate Diagnosis</b><small>Detailed evaluation to identify seizure type and underlying causes using advanced tests.</small></span><span class="go"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <a href="#contact" class="ecard rv d1"><span class="ic"><svg viewBox="0 0 40 40"><path d="M20 7v26"/><path d="M20 9a5 5 0 0 0-9 1 5 5 0 0 0-3 8 5 5 0 0 0 1 8 5 5 0 0 0 6 5 4 4 0 0 0 5 2"/><path d="M20 9a5 5 0 0 1 9 1 5 5 0 0 1 3 8 5 5 0 0 1-1 8 5 5 0 0 1-6 5 4 4 0 0 1-5 2"/><path d="M14 16c2 0 3 1 3 3M26 16c-2 0-3 1-3 3M13 25c2-1 4 0 4 2M27 25c-2-1-4 0-4 2"/></svg></span><span><b>Advanced Treatment</b><small>Personalised medication plans, surgical options where needed, and the latest therapies.</small></span><span class="go"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+      <a href="#contact" class="ecard rv d2"><span class="ic"><svg viewBox="0 0 40 40"><path d="M20 19s-7-4.5-7-9a3.8 3.8 0 0 1 7-2 3.8 3.8 0 0 1 7 2c0 4.5-7 9-7 9z"/><path d="M5 27h6l7 3h7a2 2 0 0 0 0-4h-5"/><path d="M11 25l4-2h4"/><path d="M25 29l8-4a2 2 0 0 0-2-3.5L25 24"/></svg></span><span><b>Lifelong Support</b><small>Continuous follow‑up, lifestyle guidance and support for patients and families.</small></span><span class="go"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="voices">
+  <div class="wrap voices-grid">
+    <div>
+      <span class="tag rv">Patient Voices</span>
+      <h2 class="serif rv d1">Healing, in <em>their</em> words.</h2>
+      <div class="qnav rv d2">
+        <button id="qprev" aria-label="Previous">←</button>
+        <button id="qnext" aria-label="Next">→</button>
+        <div class="qbar"><i id="qbar"></i></div>
+      </div>
+    </div>
+    <div class="qwrap" id="qwrap">
+      <div class="quote on"><div class="stars">★★★★★</div><blockquote>We are very happy that our dad is recovering very well. We were so impressed with the cleanliness of the hospital and the lovely staff — so caring and kind, with beautiful smiles on their faces.</blockquote><cite><i>V</i><span>Vani Potru<small>Patient family</small></span></cite></div>
+      <div class="quote"><div class="stars">★★★★★</div><blockquote>This is one hospital that truly cares for patients. The treatment, diagnosis and the way my mother was cared for is admirable. She is feeling much better now.</blockquote><cite><i>K</i><span>K N<small>Patient family</small></span></cite></div>
+      <div class="quote"><div class="stars">★★★★★</div><blockquote>The best hospital for neurology ailments. From the lab to the lift, nursing to housekeeping — the staff is polite and helpful, and the doctor makes patients feel comfortable before every procedure.</blockquote><cite><i>P</i><span>Pavani<small>Patient</small></span></cite></div>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery -->
+<section class="gallery curve" id="gallery">
+  <div class="wrap">
+    <div class="g-head">
+      <div><span class="tag rv">Our Photo Gallery</span><h2 class="serif rv d1">Moments &amp; <em>milestones</em>,<br>beyond the ward.</h2></div>
+    </div>
+    <div class="ggrid">
+      <div class="gi mask tilt" data-label="Operation theatre"><img src="https://www.naveenhospitals.com/img/slider/slide2-3.jpg" style="object-position:12% 50%" alt="Surgeons in the operation theatre"></div>
+      <div class="gi mask tilt" data-label="Recognition"><img src="https://www.naveenhospitals.com/img/gallery/gallery1.jpg" alt="Award ceremony"></div>
+      <div class="gi mask tilt" data-label="CME sessions"><img src="https://www.naveenhospitals.com/img/gallery/gallery3.jpg" alt="Medical education session"></div>
+      <div class="gi mask tilt" data-label="Awards"><img src="https://www.naveenhospitals.com/img/gallery/gallery4.jpg" alt="Award presentation"></div>
+      <div class="gi mask tilt" data-label="Our team"><img src="https://www.naveenhospitals.com/img/gallery/gallery5.jpg" alt="Hospital team group photo"></div>
+      <div class="gi mask tilt" data-label="Conferences"><img src="https://www.naveenhospitals.com/img/gallery/gallery6.jpg" alt="Medical conference"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Emergency + booking -->
+<section class="emerg curve curve-b" id="contact">
+  <div class="wrap">
+    <span class="tag rv" style="color:#fff">For emergency cases</span>
+    <div class="bigtxt" style="margin-top:20px"><span class="line"><span class="sl">We're here,</span></span><span class="line"><span class="sl"><em>day &amp; night.</em></span></span></div>
+    <div class="emerg-row">
+      <div class="phones rv">
+        <a href="tel:9493438552">94934 38552 <span>Call now →</span></a>
+        <a href="tel:7989938145">79899 38145 <span>Call now →</span></a>
+        <a href="mailto:contactdrnaveen@gmail.com" style="font-size:clamp(20px,2.2vw,30px)">contactdrnaveen@gmail.com <span>Email →</span></a>
+      </div>
+      <form class="form rv d1" id="bookForm">
+        <h3>Book an appointment</h3>
+        <div class="row"><input required placeholder="Full name" name="name"><input required placeholder="Phone number" name="phone" type="tel"></div>
+        <div class="row">
+          <select name="dept"><option>Neurology</option><option>Epilepsy Clinic</option><option>General Surgery</option><option>Ophthalmology</option></select>
+          <input type="date" name="date">
+        </div>
+        <button class="btn" type="submit">Request appointment <span class="arrow">→</span></button>
+        <div class="note" id="formNote">Our team will call you back to confirm your slot.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="f-grid">
+      <div>
+        <a href="#top" class="brand" aria-label="Naveen Hospitals — Passion for care, back to top"><img class="brand-mark" src="img/logo-mark.png" alt="" width="203" height="400"><span class="brand-text"><b>Naveen Hospitals</b><i class="brand-rule"></i><small>Passion for care</small></span></a>
+        <p style="margin-top:20px;max-width:320px">A multispecialty hospital in the heart of Guntur, serving people with utmost care, compassion and commitment.</p>
+      </div>
+      <div class="f-links"><h4>Quick links</h4><a href="#about">About Us</a><a href="#specialities">Departments</a><a href="#epilepsy">Neurosciences</a><a href="#gallery">Gallery</a><a href="#contact">Contact</a></div>
+      <div><h4>Visit</h4><p>Old Bank Road, Lane beside Sai Bhaskar Hospital, Near Vinayaka Temple, Kothapet, Guntur 522001</p></div>
+      <div><h4>Location</h4><div class="map"><iframe loading="lazy" title="Map" src="https://www.google.com/maps?q=Naveen+Hospitals+Kothapet+Guntur&output=embed"></iframe></div></div>
+    </div>
+    <div class="mega">Naveen<em style="font-style:italic"> Hospitals</em></div>
+    <div class="f-bottom"><span>© 2026 Naveen Hospitals. All rights reserved.</span><span>Kothapet · Guntur · Andhra Pradesh</span></div>
+  </div>
+</footer>
+
+<a href="tel:9493438552" class="sos" id="sos"><i>☎</i>24×7 Emergency</a>
+
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(() => {
+  const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Preloader */
+  let p = 0; const pct = $('#pct');
+  const tick = setInterval(() => { p = Math.min(100, p + Math.ceil(Math.random()*9)); pct.textContent = p + '%'; if (p >= 100) clearInterval(tick); }, 60);
+  const finish = () => { $('#loader').classList.add('done'); document.body.classList.add('ready'); };
+  window.addEventListener('load', () => setTimeout(finish, reduce ? 0 : 1500));
+  setTimeout(finish, 4000);
+
+  /* Cursor */
+  const cur = $('#cursor'), dot = $('#cursorDot'); let mx = innerWidth/2, my = innerHeight/2, cx = mx, cy = my;
+  addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; dot.style.transform = `translate(${mx-3}px,${my-3}px)`; });
+  (function loop(){ cx += (mx-cx)*.15; cy += (my-cy)*.15; cur.style.transform = `translate(${cx}px,${cy}px) translate(-50%,-50%)`; requestAnimationFrame(loop); })();
+  $$('a,button,.panel,.gi').forEach(el => { el.addEventListener('mouseenter', () => cur.classList.add('hover')); el.addEventListener('mouseleave', () => cur.classList.remove('hover')); });
+
+  /* Magnetic buttons */
+  $$('.magnetic').forEach(b => {
+    b.addEventListener('mousemove', e => { const r = b.getBoundingClientRect(); b.style.transform = `translate(${(e.clientX-r.left-r.width/2)*.25}px,${(e.clientY-r.top-r.height/2)*.35}px)`; });
+    b.addEventListener('mouseleave', () => b.style.transform = '');
+  });
+
+  /* Mobile nav */
+  $('#burger').onclick = () => $('#mnav').classList.toggle('open');
+  $$('#mnav a').forEach(a => a.onclick = () => $('#mnav').classList.remove('open'));
+
+  /* Neural network canvas */
+  const cv = $('#neural'), ctx = cv.getContext('2d'); let W, H, nodes = [], pulses = [];
+  const dpr = Math.min(devicePixelRatio || 1, 2);
+  function size(){ W = cv.clientWidth; H = cv.clientHeight; cv.width = W*dpr; cv.height = H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+    const n = Math.round(Math.min(110, W*H/14000)); nodes = Array.from({length:n}, () => ({x:Math.random()*W, y:Math.random()*H, vx:(Math.random()-.5)*.3, vy:(Math.random()-.5)*.3, r:Math.random()*1.8+.6})); }
+  size(); addEventListener('resize', size);
+  let hmx = -999, hmy = -999;
+  cv.parentElement.addEventListener('mousemove', e => { const r = cv.getBoundingClientRect(); hmx = e.clientX - r.left; hmy = e.clientY - r.top; });
+  cv.parentElement.addEventListener('mouseleave', () => { hmx = hmy = -999; });
+  const LINK = 140;
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    for (const a of nodes){
+      a.x += a.vx; a.y += a.vy;
+      if (a.x<0||a.x>W) a.vx*=-1; if (a.y<0||a.y>H) a.vy*=-1;
+      const dx = a.x-hmx, dy = a.y-hmy, d = Math.hypot(dx,dy);
+      if (d < 160){ a.x += dx/d*1.2; a.y += dy/d*1.2; }
+    }
+    for (let i=0;i<nodes.length;i++) for (let j=i+1;j<nodes.length;j++){
+      const a=nodes[i], b=nodes[j], d=Math.hypot(a.x-b.x,a.y-b.y);
+      if (d<LINK){ ctx.strokeStyle=`rgba(95,224,255,${(1-d/LINK)*.28})`; ctx.lineWidth=.7; ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
+        if (!reduce && Math.random()<.0006) pulses.push({a,b,t:0}); }
+    }
+    for (const n of nodes){ ctx.fillStyle='rgba(255,255,255,.75)'; ctx.beginPath(); ctx.arc(n.x,n.y,n.r,0,7); ctx.fill(); }
+    pulses = pulses.filter(p => p.t < 1);
+    for (const p of pulses){ p.t += .02; const x=p.a.x+(p.b.x-p.a.x)*p.t, y=p.a.y+(p.b.y-p.a.y)*p.t;
+      const g = ctx.createRadialGradient(x,y,0,x,y,10); g.addColorStop(0,'rgba(95,227,211,.95)'); g.addColorStop(1,'rgba(95,227,211,0)');
+      ctx.fillStyle=g; ctx.beginPath(); ctx.arc(x,y,10,0,7); ctx.fill(); }
+    requestAnimationFrame(draw);
+  }
+  draw();
+
+  /* Hero video reel — crossfades between clips */
+  const clips = [
+    {src:'https://assets.mixkit.co/videos/23069/23069-720.mp4', cap:'An expert medical team'},
+    {src:'https://assets.mixkit.co/videos/22934/22934-720.mp4', cap:'Advanced brain imaging'},
+    {src:'https://assets.mixkit.co/videos/6562/6562-720.mp4', cap:'Compassionate consultations'},
+    {src:'https://assets.mixkit.co/videos/46364/46364-720.mp4', cap:'24×7 patient monitoring'}
+  ];
+  const vids = $$('.hero-video video'), bars = $$('#reelBars i'), CLIP = 8;
+  let ci = 0, act = 0, switching = false;
+  function setReel(i){ $('#reelNum').textContent = String(i+1).padStart(2,'0'); const cap = $('#reelCap'); cap.style.opacity = 0;
+    setTimeout(() => { cap.textContent = clips[i].cap; cap.style.opacity = ''; }, 300);
+    bars.forEach((b,k) => b.style.width = k < i ? '100%' : '0'); }
+  function go(i){
+    if (switching) return; switching = true;
+    const cur = vids[act], nxt = vids[act^1]; ci = (i + clips.length) % clips.length;
+    if (!nxt.src.endsWith(clips[ci].src.split('/').pop())) nxt.src = clips[ci].src;
+    nxt.currentTime = 0; nxt.play().catch(()=>{}); nxt.classList.add('on'); cur.classList.remove('on'); setReel(ci);
+    act ^= 1;
+    setTimeout(() => { cur.pause(); cur.src = clips[(ci+1) % clips.length].src; cur.load(); switching = false; }, 1700);
+  }
+  vids.forEach(v => v.addEventListener('timeupdate', () => {
+    if (v !== vids[act]) return; const lim = Math.min(CLIP, (v.duration || CLIP) - 1.7);
+    bars[ci].style.width = Math.min(100, v.currentTime / lim * 100) + '%';
+    if (v.currentTime >= lim) go(ci + 1);
+  }));
+  $$('#reelBars span').forEach((b,k) => b.addEventListener('click', () => k !== ci && go(k)));
+  vids[0].src = clips[0].src; vids[1].src = clips[1].src;
+  vids[0].classList.add('on');
+  if (!reduce) vids[0].play().catch(()=>{});
+
+  /* Reveal on scroll */
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold:.15, rootMargin:'0px 0px -60px 0px'});
+  $$('.rv').forEach(el => io.observe(el));
+  io.observe($('#founder'));
+  // clip-path hides a mask's own box from IntersectionObserver, so watch its parent instead
+  const mIO = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.querySelectorAll(':scope > .mask').forEach((m,i) => { m.style.transitionDelay = (i*0.08)+'s'; m.classList.add('in'); }); mIO.unobserve(e.target); } }), {threshold:.1});
+  new Set($$('.mask').map(m => m.parentElement)).forEach(p => mIO.observe(p));
+
+  /* Big emergency text split */
+  const bigIO = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ $$('.emerg .sl').forEach((s,i) => { s.style.transition = `transform 1.3s cubic-bezier(.22,1,.36,1) ${i*.12}s`; s.style.transform = 'none'; }); bigIO.disconnect(); } }), {threshold:.3});
+  bigIO.observe($('.emerg .bigtxt'));
+
+  /* Counters */
+  const cIO = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return; const el = e.target, end = +el.dataset.count, t0 = performance.now(), dur = 2200;
+    (function step(t){ const k = Math.min(1,(t-t0)/dur), v = Math.round(end*(1-Math.pow(1-k,4))); el.textContent = v.toLocaleString('en-IN'); if (k<1) requestAnimationFrame(step); })(t0); cIO.unobserve(el); }), {threshold:.5});
+  $$('[data-count]').forEach(el => cIO.observe(el));
+
+  /* ECG draw tied to scroll */
+  const ecg = $('#ecgPath'), L = ecg.getTotalLength(); ecg.style.strokeDasharray = L; ecg.style.strokeDashoffset = L;
+
+  /* Specialities: expanding panels — hover/click/focus to open, auto-advance while in view */
+  const panels = $$('.panel'), PANEL_MS = 6000;
+  let pi = 0, pTimer = null, pHover = null, pPaused = false, pInView = false;
+  function openPanel(i){
+    pi = i; panels.forEach((p,k) => { p.classList.toggle('active', k === i); p.setAttribute('aria-expanded', k === i); });
+    runBar();
+  }
+  function runBar(){
+    clearTimeout(pTimer);
+    panels.forEach(p => { const b = p.querySelector('.p-bar'); b.style.transition = 'none'; b.style.width = '0'; });
+    if (pPaused || !pInView || reduce || innerWidth < 900) return;
+    const b = panels[pi].querySelector('.p-bar');
+    requestAnimationFrame(() => requestAnimationFrame(() => { b.style.transition = `width ${PANEL_MS}ms linear`; b.style.width = '100%'; }));
+    pTimer = setTimeout(() => openPanel((pi + 1) % panels.length), PANEL_MS);
+  }
+  panels.forEach((p,k) => {
+    p.addEventListener('mouseenter', () => { clearTimeout(pHover); pHover = setTimeout(() => k !== pi && openPanel(k), 120); });
+    p.addEventListener('mouseleave', () => clearTimeout(pHover));
+    p.addEventListener('click', () => k !== pi && openPanel(k));
+    p.addEventListener('focus', () => k !== pi && openPanel(k));
+  });
+  const pWrap = $('#panels');
+  pWrap.addEventListener('mouseenter', () => { pPaused = true; runBar(); });
+  pWrap.addEventListener('mouseleave', () => { pPaused = false; runBar(); });
+  new IntersectionObserver(es => es.forEach(e => { pInView = e.isIntersecting; runBar(); }), {threshold:.4}).observe(pWrap);
+  openPanel(0);
+
+  /* Neuro sphere: reveal photo, draw connectors */
+  $$('.ns-link').forEach(p => p.style.setProperty('--len', Math.ceil(p.getTotalLength())));
+  const startBrain = () => $('#brain').classList.add('in');
+  new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) startBrain(); }), {threshold:.25}).observe($('#brain'));
+
+  /* Smooth scrolling (desktop only; touch devices keep native scrolling) */
+  let lenis = null;
+  if (!reduce && window.Lenis){
+    lenis = new Lenis({lerp:.09, wheelMultiplier:1, smoothWheel:true});
+    (function raf(t){ lenis.raf(t); requestAnimationFrame(raf); })(performance.now());
+  }
+  $$('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+    const id = a.getAttribute('href'), el = id.length > 1 ? $(id) : $('#top'); if (!el) return;
+    e.preventDefault();
+    if (lenis) lenis.scrollTo(el, {offset: id === '#top' ? 0 : -20, duration:1.6});
+    else el.scrollIntoView({behavior: reduce ? 'auto' : 'smooth'});
+  }));
+  const curves = $$('.curve');
+
+  /* Scroll-driven stuff */
+  const nav = $('#nav'), sos = $('#sos'); let lastY = 0;
+  function onScroll(){
+    const y = scrollY;
+    nav.classList.toggle('hide', y > lastY && y > 400 && !$('#mnav').classList.contains('open'));
+    const heroH = $('.hero').offsetHeight;
+    const darkSecs = $$('.hero,.stats,.gallery,footer,.emerg');
+    const onDark = darkSecs.some(s => { const r = s.getBoundingClientRect(); return r.top <= 40 && r.bottom >= 40; });
+    nav.classList.toggle('light', !onDark);
+    sos.classList.toggle('show', y > heroH * .6);
+    // pause the hero reel once it's off screen
+    const hv = vids[act]; if (y > heroH && !hv.paused) hv.pause(); else if (y <= heroH && hv.paused && !reduce && !switching) hv.play().catch(()=>{});
+    lastY = y;
+    curves.forEach(c => { const t = c.getBoundingClientRect().top, max = innerWidth < 700 ? 60 : 140;
+      c.style.setProperty('--ct', Math.round(Math.max(0, Math.min(1, t / innerHeight)) * max) + 'px'); });
+    // reveal fallback (covers cases where IntersectionObserver is throttled)
+    $$('.rv:not(.in), .founder:not(.in)').forEach(el => { if (el.getBoundingClientRect().top < innerHeight*.9) el.classList.add('in'); });
+    if (!$('#brain').classList.contains('in') && $('#brain').getBoundingClientRect().top < innerHeight*.9) startBrain();
+    $$('.mask:not(.in)').forEach(el => { if (el.parentElement.getBoundingClientRect().top < innerHeight*.9) el.classList.add('in'); });
+    $$('.emerg .sl').forEach((s,i) => { if (s.style.transform !== 'none' && $('.emerg .bigtxt').getBoundingClientRect().top < innerHeight*.8){ s.style.transition = `transform 1.3s cubic-bezier(.22,1,.36,1) ${i*.12}s`; s.style.transform = 'none'; } });
+    // hero parallax
+    $('.hero-inner').style.transform = `translateY(${y*.25}px)`; $('.hero-inner').style.opacity = Math.max(0, 1 - y/(heroH*.8));
+    // ecg
+    const st = $('.stats').getBoundingClientRect(); const k = Math.min(1, Math.max(0, (innerHeight - st.top) / (innerHeight + st.height)));
+    ecg.style.strokeDashoffset = L * (1 - k*1.4);
+    // parallax imgs
+    $$('[data-speed]').forEach(img => { const r = img.parentElement.getBoundingClientRect(); img.style.transform = `translateY(${(r.top - innerHeight/2) * +img.dataset.speed}px)`; });
+  }
+  addEventListener('scroll', () => requestAnimationFrame(onScroll), {passive:true}); onScroll();
+
+  /* Gallery tilt */
+  $$('.tilt').forEach(el => {
+    el.addEventListener('mousemove', e => { const r = el.getBoundingClientRect(), x = (e.clientX-r.left)/r.width-.5, y = (e.clientY-r.top)/r.height-.5; el.style.transform = `perspective(900px) rotateY(${x*10}deg) rotateX(${-y*10}deg)`; });
+    el.addEventListener('mouseleave', () => { el.style.transition = 'transform .8s cubic-bezier(.22,1,.36,1), clip-path 1.4s cubic-bezier(.22,1,.36,1)'; el.style.transform = ''; });
+  });
+
+  /* Testimonials: word-by-word */
+  const qs = $$('.quote');
+  qs.forEach(q => { const bq = q.querySelector('blockquote'); bq.innerHTML = bq.textContent.split(' ').map((w,i) => `<span class="w" style="transition-delay:${i*0.025}s">${w}</span>`).join(' '); });
+  let qi = 0, qt; const qbar = $('#qbar');
+  function show(i){ qs[qi].classList.remove('on'); qi = (i + qs.length) % qs.length; qs[qi].classList.add('on');
+    qbar.style.transition = 'none'; qbar.style.width = '0'; requestAnimationFrame(() => requestAnimationFrame(() => { qbar.style.transition = 'width 7s linear'; qbar.style.width = '100%'; }));
+    clearTimeout(qt); qt = setTimeout(() => show(qi+1), 7000); }
+  $('#qnext').onclick = () => show(qi+1); $('#qprev').onclick = () => show(qi-1);
+  show(0);
+
+  /* Booking form (demo) */
+  $('#bookForm').addEventListener('submit', e => { e.preventDefault(); const n = e.target.name.value.split(' ')[0];
+    $('#formNote').textContent = `Thank you, ${n}! Our team will call you shortly to confirm.`; $('#formNote').style.color = 'var(--teal)'; e.target.reset(); });
+})();
+</script>
+</body>
+</html>
