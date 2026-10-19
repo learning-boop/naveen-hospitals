@@ -352,7 +352,7 @@ h2 em,h3 em,.bigtxt em{font-family:'Instrument Serif',Georgia,serif;font-weight:
 
 /* ---------- Emergency / CTA ---------- */
 .emerg{background:var(--red);color:#fff;padding:130px 0;overflow:hidden}
-.emerg .bigtxt{font-family:'Bricolage Grotesque',Manrope,sans-serif;font-weight:600;font-size:clamp(60px,13vw,220px);line-height:.88;letter-spacing:-.04em}
+.emerg .bigtxt{font-family:'Bricolage Grotesque',Manrope,sans-serif;font-weight:600;font-size:clamp(44px,7.5vw,120px);line-height:.92;letter-spacing:-.04em}
 .emerg .bigtxt em{font-style:italic;opacity:.55}
 .emerg-row{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:60px;align-items:end}
 .phones a{display:flex;justify-content:space-between;align-items:center;padding:22px 0;border-top:1px solid rgba(255,255,255,.3);font-family:'Bricolage Grotesque',Manrope,sans-serif;font-size:clamp(28px,3.4vw,48px);font-weight:500;letter-spacing:-.03em;transition:padding .5s var(--ease)}
